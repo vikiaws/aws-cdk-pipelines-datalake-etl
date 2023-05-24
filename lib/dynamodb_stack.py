@@ -5,7 +5,7 @@ import aws_cdk.core as cdk
 import aws_cdk.aws_dynamodb as dynamodb
 
 from .configuration import (
-    PROD, TEST, get_logical_id_prefix, get_resource_name_prefix,
+    PROD, get_logical_id_prefix, get_resource_name_prefix,
 )
 
 
