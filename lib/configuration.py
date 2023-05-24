@@ -6,20 +6,19 @@ import re
 # Environments (targeted at accounts)
 DEPLOYMENT = 'Deployment'
 DEV = 'Dev'
-TEST = 'Test'
 PROD = 'Prod'
 
 # The following constants are used to map to parameter/secret paths
 ENVIRONMENT = 'environment'
 
 # Manual Inputs
-GITHUB_REPOSITORY_OWNER_NAME = 'github_repository_owner_name'
-GITHUB_REPOSITORY_NAME = 'github_repository_name'
-ACCOUNT_ID = 'account_id'
-REGION = 'region'
-LOGICAL_ID_PREFIX = 'logical_id_prefix'
-RESOURCE_NAME_PREFIX = 'resource_name_prefix'
-VPC_CIDR = 'vpc_cidr'
+GITHUB_REPOSITORY_OWNER_NAME = 'vikiaws'
+GITHUB_REPOSITORY_NAME = 'aws-cdk-pipelines-datalake-etl'
+ACCOUNT_ID = '967887801084'
+REGION = 'eu-west-2'
+LOGICAL_ID_PREFIX = 'DataLakeVikiTrial'
+RESOURCE_NAME_PREFIX = 'data-lake-viki-trial'
+VPC_CIDR = '10.0.0.0/16'
 
 # Secrets Manager Inputs
 GITHUB_TOKEN = 'github_token'
@@ -57,32 +56,27 @@ def get_local_configuration(environment: str) -> dict:
     """
     local_mapping = {
         DEPLOYMENT: {
-            ACCOUNT_ID: '',
-            REGION: 'us-east-2',
-            GITHUB_REPOSITORY_OWNER_NAME: '',
-            GITHUB_REPOSITORY_NAME: '',
+            ACCOUNT_ID: '967887801084',
+            REGION: 'eu-west-2',
+            GITHUB_REPOSITORY_OWNER_NAME: 'vikiaws',
+            GITHUB_REPOSITORY_NAME: 'aws-cdk-pipelines-datalake-etl',
             # This is used in the Logical Id of CloudFormation resources.
             # We recommend Capital case for consistency.
             # Example: DataLakeCdkBlog
-            LOGICAL_ID_PREFIX: '',
+            LOGICAL_ID_PREFIX: 'DataLakeVikiTrial',
             # Important: This is used in resources that must be **globally** unique!
             # Resource names may only contain Alphanumeric and hyphens and cannot contain trailing hyphens.
             # Example: unique-identifier-data-lake
-            RESOURCE_NAME_PREFIX: '',
+            RESOURCE_NAME_PREFIX: 'data-lake-viki-trial',
         },
         DEV: {
-            ACCOUNT_ID: '',
-            REGION: 'us-east-2',
+            ACCOUNT_ID: '373755588988',
+            REGION: 'eu-west-2',
             VPC_CIDR: '10.20.0.0/24'
         },
-        TEST: {
-            ACCOUNT_ID: '',
-            REGION: 'us-east-2',
-            VPC_CIDR: '10.10.0.0/24'
-        },
         PROD: {
-            ACCOUNT_ID: '',
-            REGION: 'us-east-2',
+            ACCOUNT_ID: '408574949687',
+            REGION: 'eu-west-2',
             VPC_CIDR: '10.0.0.0/24'
         }
     }
@@ -144,7 +138,6 @@ def get_all_configurations() -> dict:
             **get_local_configuration(DEPLOYMENT),
         },
         DEV: get_environment_configuration(DEV),
-        TEST: get_environment_configuration(TEST),
         PROD: get_environment_configuration(PROD),
     }
 
