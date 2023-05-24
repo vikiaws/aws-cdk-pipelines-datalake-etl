@@ -8,7 +8,7 @@ import aws_cdk.core as cdk
 
 from lib.pipeline_stack import PipelineStack
 from lib.configuration import (
-    ACCOUNT_ID, DEPLOYMENT, DEV, TEST, PROD, REGION, 
+    ACCOUNT_ID, DEPLOYMENT, DEV, PROD, REGION, 
     get_logical_id_prefix, get_all_configurations,
 )
 from lib.tagging import tag
