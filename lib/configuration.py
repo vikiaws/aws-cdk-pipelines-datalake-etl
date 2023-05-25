@@ -16,8 +16,8 @@ GITHUB_REPOSITORY_OWNER_NAME = 'vikiaws'
 GITHUB_REPOSITORY_NAME = 'aws-cdk-pipelines-datalake-etl'
 ACCOUNT_ID = '967887801084'
 REGION = 'eu-west-2'
-LOGICAL_ID_PREFIX = 'DataLakeVikiTrial'
-RESOURCE_NAME_PREFIX = 'data-lake-viki-trial'
+LOGICAL_ID_PREFIX = 'DataLakeVikiEtl'
+RESOURCE_NAME_PREFIX = 'data-lake-viki-etl'
 VPC_CIDR = '10.0.0.0/16'
 
 # Secrets Manager Inputs
@@ -63,11 +63,11 @@ def get_local_configuration(environment: str) -> dict:
             # This is used in the Logical Id of CloudFormation resources.
             # We recommend Capital case for consistency.
             # Example: DataLakeCdkBlog
-            LOGICAL_ID_PREFIX: 'DataLakeVikiTrial',
+            LOGICAL_ID_PREFIX: 'DataLakeVikiEtl',
             # Important: This is used in resources that must be **globally** unique!
             # Resource names may only contain Alphanumeric and hyphens and cannot contain trailing hyphens.
             # Example: unique-identifier-data-lake
-            RESOURCE_NAME_PREFIX: 'data-lake-viki-trial',
+            RESOURCE_NAME_PREFIX: 'data-lake-viki-etl',
         },
         DEV: {
             ACCOUNT_ID: '373755588988',
