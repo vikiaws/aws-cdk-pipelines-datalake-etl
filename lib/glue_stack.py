@@ -267,7 +267,7 @@ class GlueStack(cdk.Stack):
             f'{target_environment}{logical_id_prefix}RawGlueRole',
             role_name=f'{target_environment.lower()}-{resource_name_prefix}-raw-glue-role',
             assumed_by=iam.ServicePrincipal('glue.amazonaws.com'),
-            inline_policies={'s3a':
+            inline_policies=[
                 iam.PolicyDocument(statements=[
                     iam.PolicyStatement(
                         effect=iam.Effect.ALLOW,
@@ -282,7 +282,6 @@ class GlueStack(cdk.Stack):
                         ]
                     )
                 ]),
-            's3b':
                 iam.PolicyDocument(statements=[
                     iam.PolicyStatement(
                         effect=iam.Effect.ALLOW,
@@ -296,8 +295,7 @@ class GlueStack(cdk.Stack):
                             'arn:aws:s3:::*/*'
                         ]
                     )
-                ]),   
-            's3c':                          
+                ]),
                 iam.PolicyDocument(statements=[
                     iam.PolicyStatement(
                         effect=iam.Effect.ALLOW,
@@ -308,9 +306,8 @@ class GlueStack(cdk.Stack):
                             '*'
                         ]
                     )
-                ]),   
+                ]),
                 # NOTE: This is required due to bucket level encryption on S3 Buckets
-            's3d':
                 iam.PolicyDocument(statements=[
                     iam.PolicyStatement(
                         effect=iam.Effect.ALLOW,
@@ -321,8 +318,8 @@ class GlueStack(cdk.Stack):
                             s3_kms_key.key_arn,
                         ]
                     )
-                ])
-            },
+                ]),
+            ],
             managed_policies=[
                 iam.ManagedPolicy.from_aws_managed_policy_name('service-role/AWSGlueServiceRole'),
             ]
