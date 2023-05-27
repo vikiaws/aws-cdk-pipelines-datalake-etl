@@ -85,7 +85,7 @@ class StepFunctionsStack(cdk.Stack):
             self,
             f'{target_environment}{logical_id_prefix}EtlStatusUpdate',
             function_name=f'{target_environment.lower()}-{resource_name_prefix}-etl-status-update',
-            runtime=_lambda.Runtime.PYTHON_3_9,
+            runtime=_lambda.Runtime.static PYTHON_3_9,
             handler='lambda_handler.lambda_handler',
             code=_lambda.Code.from_asset(f'{os.path.dirname(__file__)}/etl_job_auditor'),
             environment={
@@ -208,7 +208,7 @@ class StepFunctionsStack(cdk.Stack):
             self,
             f'{target_environment}{logical_id_prefix}EtlTrigger',
             function_name=f'{target_environment.lower()}-{resource_name_prefix}-etl-state-machine-trigger',
-            runtime=_lambda.Runtime.PYTHON_3_9,
+            runtime=_lambda.Runtime.static PYTHON_3_9,
             handler='lambda_handler.lambda_handler',
             code=_lambda.Code.from_asset(f'{os.path.dirname(__file__)}/state_machine_trigger'),
             environment={
