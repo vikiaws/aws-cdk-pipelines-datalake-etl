@@ -292,7 +292,7 @@ class GlueStack(cdk.Stack):
                             's3:DeleteObject',
                         ],
                         resources=[
-                            'arn:aws:s3:::*/*'
+                            'arn:aws:s3:::*'
                         ]
                     )
                 ]),
