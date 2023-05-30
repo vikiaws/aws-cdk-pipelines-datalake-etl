@@ -278,7 +278,7 @@ class GlueStack(cdk.Stack):
                             's3:GetBucketLocation',
                         ],
                         resources=[
-                            'arn:aws:s3:::'*'
+                            'arn:aws:s3:::*'
                         ]
                     )
                 ]),
