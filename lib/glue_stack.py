@@ -112,7 +112,7 @@ class GlueStack(cdk.Stack):
             name=f'{target_environment.lower()}-{resource_name_prefix}-raw-to-conformed-job',
             command=glue.CfnJob.JobCommandProperty(
                 name='glueetl',
-                python_version='3',
+                python_version='3.9',
                 script_location=f's3://{glue_scripts_bucket.bucket_name}/etl/etl_raw_to_conformed.py'
             ),
             connections=glue.CfnJob.ConnectionsListProperty(
@@ -141,7 +141,7 @@ class GlueStack(cdk.Stack):
             name=f'{target_environment.lower()}-{resource_name_prefix}-conformed-to-purpose-built-job',
             command=glue.CfnJob.JobCommandProperty(
                 name='glueetl',
-                python_version='3',
+                python_version='3.9',
                 script_location=f's3://{glue_scripts_bucket.bucket_name}/etl/etl_conformed_to_purposebuilt.py'
             ),
             connections=glue.CfnJob.ConnectionsListProperty(
